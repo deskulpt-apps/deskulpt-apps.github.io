@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Theme"],"fn":["default_opacity"],"static":["SETTINGS_FILE"],"struct":["AppSettings","Settings","Shortcuts","WidgetSettings"]};

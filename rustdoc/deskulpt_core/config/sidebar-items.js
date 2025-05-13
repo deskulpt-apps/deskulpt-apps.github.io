@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["WidgetConfig"],"macro":["impl_load"],"struct":["DeskulptConf","PackageJson"]};

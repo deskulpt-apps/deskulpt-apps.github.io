@@ -1,0 +1,1 @@
+searchState.loadedDescShard("deskulpt_plugin_macros", 0, "This crate implements procedural macros for the …\nInternals of the <code>#[dispatch]</code> macro.\nToken stream processor for the <code>#[dispatch]</code> macro.")

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["CmdError"],"macro":["cmdbail","cmderr"],"type":["CmdResult"]};

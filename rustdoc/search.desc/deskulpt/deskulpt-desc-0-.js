@@ -1,0 +1,1 @@
+searchState.loadedDescShard("deskulpt", 0, "This is the main crate of Deskulpt.\nImage object for the Deskulpt icon.\nEntry point for the Deskulpt backend.")

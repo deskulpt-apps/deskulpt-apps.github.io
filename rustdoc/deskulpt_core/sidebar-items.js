@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["on_window_event"],"mod":["bundler","commands","config","events","path","settings","shortcuts","states","tray","window"],"struct":["Settings"],"trait":["EventsExt","PathExt","ShortcutsExt","StatesExtCanvasClickThrough","StatesExtInitialRender","StatesExtWidgetConfigMap","TrayExt","WindowExt"]};
