@@ -8,8 +8,8 @@
         id: <a class="struct" href="https://doc.rust-lang.org/1.87.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
         plugin: &amp;Self::<a class="associatedtype" href="trait.PluginCommand.html#associatedtype.Plugin" title="type deskulpt_plugin::PluginCommand::Plugin">Plugin</a>,
         engine: &amp;<a class="struct" href="struct.EngineInterface.html" title="struct deskulpt_plugin::EngineInterface">EngineInterface</a>,
-        input: <a class="enum" href="https://docs.rs/serde_json/1.0.134/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
-    ) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.95/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.134/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;;
+        input: <a class="enum" href="https://docs.rs/serde_json/1.0.140/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
+    ) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.98/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.140/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;;
 }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The API for a Deskulpt plugin command.</p>
 </div></details><h2 id="required-associated-types" class="section-header">Required Associated Types<a href="#required-associated-types" class="anchor">§</a></h2><div class="methods"><details class="toggle" open><summary><section id="associatedtype.Plugin" class="method"><a class="src rightside" href="../src/deskulpt_plugin/command.rs.html#14">Source</a><h4 class="code-header">type <a href="#associatedtype.Plugin" class="associatedtype">Plugin</a>: <a class="trait" href="trait.Plugin.html" title="trait deskulpt_plugin::Plugin">Plugin</a></h4></section></summary><div class="docblock"><p>The type of the plugin the command runs on.</p>
 <p>This is needed for the <a href="trait.PluginCommand.html#tymethod.run" title="method deskulpt_plugin::PluginCommand::run"><code>run</code></a> method to take a
@@ -20,8 +20,8 @@ reference back to the plugin.</p>
     id: <a class="struct" href="https://doc.rust-lang.org/1.87.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     plugin: &amp;Self::<a class="associatedtype" href="trait.PluginCommand.html#associatedtype.Plugin" title="type deskulpt_plugin::PluginCommand::Plugin">Plugin</a>,
     engine: &amp;<a class="struct" href="struct.EngineInterface.html" title="struct deskulpt_plugin::EngineInterface">EngineInterface</a>,
-    input: <a class="enum" href="https://docs.rs/serde_json/1.0.134/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
-) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.95/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.134/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;</h4></section></summary><div class="docblock"><p>The implementation of the command.</p>
+    input: <a class="enum" href="https://docs.rs/serde_json/1.0.140/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
+) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.98/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.140/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;</h4></section></summary><div class="docblock"><p>The implementation of the command.</p>
 <p>One should almost always use the <a href="attr.dispatch.html" title="attr deskulpt_plugin::dispatch"><code>#[dispatch]</code></a>
 attribute when implementing this method, which allows specifying custom
 types for the <code>input</code> argument and the return value and automatically
