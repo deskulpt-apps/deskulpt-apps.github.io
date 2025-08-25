@@ -10,19 +10,19 @@
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tokio::time::sleep;
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><span class="kw">crate</span>::events::EventsExt;
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><span class="kw">crate</span>::states::StatesExtCanvasClickThrough;
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><span class="kw">crate</span>::states::StatesExtCanvasImode;
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::window::WindowExt;
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a><span class="doccomment">/// Extention trait for system tray-related operations.
-<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">pub trait </span>TrayExt&lt;R: Runtime&gt;: StatesExtCanvasClickThrough&lt;R&gt; {
+<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">pub trait </span>TrayExt&lt;R: Runtime&gt;: StatesExtCanvasImode&lt;R&gt; {
 <a href=#18 id=18 data-nosnippet>18</a>    <span class="doccomment">/// Create the system tray.
 <a href=#19 id=19 data-nosnippet>19</a>    </span><span class="kw">fn </span>create_tray(<span class="kw-2">&amp;</span><span class="self">self</span>, icon: Image) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt;
 <a href=#20 id=20 data-nosnippet>20</a>    <span class="kw">where
 <a href=#21 id=21 data-nosnippet>21</a>        </span><span class="self">Self</span>: Sized,
 <a href=#22 id=22 data-nosnippet>22</a>    {
-<a href=#23 id=23 data-nosnippet>23</a>        <span class="comment">// Store the menu item for toggling canvas click-through
+<a href=#23 id=23 data-nosnippet>23</a>        <span class="comment">// Store the menu item for toggling canvas interaction mode
 <a href=#24 id=24 data-nosnippet>24</a>        </span><span class="kw">let </span>menu_item_toggle = MenuItemBuilder::with_id(<span class="string">"tray-toggle"</span>, <span class="string">"Float"</span>).build(<span class="self">self</span>)<span class="question-mark">?</span>;
-<a href=#25 id=25 data-nosnippet>25</a>        <span class="self">self</span>.set_canvas_click_through_menu_item(<span class="kw-2">&amp;</span>menu_item_toggle);
+<a href=#25 id=25 data-nosnippet>25</a>        <span class="self">self</span>.set_canvas_imode_menu_item(<span class="kw-2">&amp;</span>menu_item_toggle);
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a>        <span class="comment">// Build the system tray menu
 <a href=#28 id=28 data-nosnippet>28</a>        </span><span class="kw">let </span>tray_menu = MenuBuilder::new(<span class="self">self</span>)
@@ -58,8 +58,8 @@
 <a href=#58 id=58 data-nosnippet>58</a></span><span class="kw">fn </span>on_menu_event&lt;R: Runtime&gt;(app_handle: <span class="kw-2">&amp;</span>AppHandle&lt;R&gt;, event: MenuEvent) {
 <a href=#59 id=59 data-nosnippet>59</a>    <span class="kw">match </span>event.id().as_ref() {
 <a href=#60 id=60 data-nosnippet>60</a>        <span class="string">"tray-toggle" </span>=&gt; {
-<a href=#61 id=61 data-nosnippet>61</a>            <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = app_handle.toggle_canvas_click_through() {
-<a href=#62 id=62 data-nosnippet>62</a>                <span class="macro">eprintln!</span>(<span class="string">"Error toggling canvas click-through: {e}"</span>);
+<a href=#61 id=61 data-nosnippet>61</a>            <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = app_handle.toggle_canvas_imode() {
+<a href=#62 id=62 data-nosnippet>62</a>                <span class="macro">eprintln!</span>(<span class="string">"Error toggling canvas interaction mode: {e}"</span>);
 <a href=#63 id=63 data-nosnippet>63</a>            }
 <a href=#64 id=64 data-nosnippet>64</a>        },
 <a href=#65 id=65 data-nosnippet>65</a>        <span class="string">"tray-manage" </span>=&gt; {
@@ -95,9 +95,9 @@
 <a href=#95 id=95 data-nosnippet>95</a>    } = event
 <a href=#96 id=96 data-nosnippet>96</a>    {
 <a href=#97 id=97 data-nosnippet>97</a>        <span class="kw">if </span>button == MouseButton::Left &amp;&amp; button_state == MouseButtonState::Down {
-<a href=#98 id=98 data-nosnippet>98</a>            <span class="comment">// Toggle canvas click-through on left-click
-<a href=#99 id=99 data-nosnippet>99</a>            </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = tray.app_handle().toggle_canvas_click_through() {
-<a href=#100 id=100 data-nosnippet>100</a>                <span class="macro">eprintln!</span>(<span class="string">"Error toggling canvas click-through: {e}"</span>);
+<a href=#98 id=98 data-nosnippet>98</a>            <span class="comment">// Toggle canvas interaction mode on left-click
+<a href=#99 id=99 data-nosnippet>99</a>            </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = tray.app_handle().toggle_canvas_imode() {
+<a href=#100 id=100 data-nosnippet>100</a>                <span class="macro">eprintln!</span>(<span class="string">"Error toggling canvas interaction mode: {e}"</span>);
 <a href=#101 id=101 data-nosnippet>101</a>            }
 <a href=#102 id=102 data-nosnippet>102</a>        }
 <a href=#103 id=103 data-nosnippet>103</a>    }

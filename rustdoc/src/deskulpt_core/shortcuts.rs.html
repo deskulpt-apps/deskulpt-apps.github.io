@@ -7,7 +7,7 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>tauri_plugin_global_shortcut::{GlobalShortcutExt, ShortcutState};
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><span class="kw">crate</span>::settings::Settings;
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><span class="kw">crate</span>::states::StatesExtCanvasClickThrough;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><span class="kw">crate</span>::states::StatesExtCanvasImode;
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><span class="kw">crate</span>::WindowExt;
 <a href=#12 id=12 data-nosnippet>12</a>
 <a href=#13 id=13 data-nosnippet>13</a><span class="doccomment">/// Implement [`ShortcutKey`] and [`ShortcutsExt`] for the given shortcuts.
@@ -97,10 +97,10 @@
 <a href=#97 id=97 data-nosnippet>97</a>}
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a><span class="macro">impl_shortcuts!</span> {
-<a href=#100 id=100 data-nosnippet>100</a>    toggle_canvas =&gt; |app_handle, <span class="kw">_</span>, event| {
+<a href=#100 id=100 data-nosnippet>100</a>    toggle_canvas_imode =&gt; |app_handle, <span class="kw">_</span>, event| {
 <a href=#101 id=101 data-nosnippet>101</a>        <span class="kw">if </span>event.state == ShortcutState::Pressed {
-<a href=#102 id=102 data-nosnippet>102</a>            <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = app_handle.toggle_canvas_click_through() {
-<a href=#103 id=103 data-nosnippet>103</a>                <span class="macro">eprintln!</span>(<span class="string">"Failed to toggle canvas click-through: {e}"</span>);
+<a href=#102 id=102 data-nosnippet>102</a>            <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = app_handle.toggle_canvas_imode() {
+<a href=#103 id=103 data-nosnippet>103</a>                <span class="macro">eprintln!</span>(<span class="string">"Failed to toggle canvas interaction mode: {e}"</span>);
 <a href=#104 id=104 data-nosnippet>104</a>            }
 <a href=#105 id=105 data-nosnippet>105</a>        }
 <a href=#106 id=106 data-nosnippet>106</a>    },

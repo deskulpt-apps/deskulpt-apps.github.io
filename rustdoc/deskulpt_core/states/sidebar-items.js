@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["canvas_click_through","initial_render","widget_config_map"]};
+window.SIDEBAR_ITEMS = {"mod":["canvas_imode","initial_render","widget_config_map"]};
