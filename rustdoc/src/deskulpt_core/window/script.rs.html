@@ -36,7 +36,7 @@
 <a href=#36 id=36 data-nosnippet>36</a>    <span class="doccomment">/// Generate JavaScript code for initializing the canvas window.
 <a href=#37 id=37 data-nosnippet>37</a>    </span><span class="kw">pub fn </span>generate(initial_settings: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>Settings) -&gt; <span class="prelude-ty">Result</span>&lt;String&gt; {
 <a href=#38 id=38 data-nosnippet>38</a>        <span class="kw">let </span>template = <span class="self">Self </span>{
-<a href=#39 id=39 data-nosnippet>39</a>            apis_wrapper: <span class="macro">include_str!</span>(<span class="string">"../../generated/apis.wrapper.js"</span>),
+<a href=#39 id=39 data-nosnippet>39</a>            apis_wrapper: <span class="macro">include_str!</span>(<span class="string">"../../gen/apis.wrapper.js"</span>),
 <a href=#40 id=40 data-nosnippet>40</a>            initial_settings,
 <a href=#41 id=41 data-nosnippet>41</a>        };
 <a href=#42 id=42 data-nosnippet>42</a>        <span class="kw">let </span>serialized = template.render_default(<span class="kw-2">&amp;</span>Default::default())<span class="question-mark">?</span>;

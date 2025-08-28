@@ -38,10 +38,10 @@
 <a href=#38 id=38 data-nosnippet>38</a>
 <a href=#39 id=39 data-nosnippet>39</a>    <span class="doccomment">/// Build the Deskulpt widget bundler.
 <a href=#40 id=40 data-nosnippet>40</a>    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; WidgetBundler {
-<a href=#41 id=41 data-nosnippet>41</a>        <span class="kw">let </span>jsx_runtime_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/generated/jsx-runtime.js"</span>;
-<a href=#42 id=42 data-nosnippet>42</a>        <span class="kw">let </span>raw_apis_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/generated/raw-apis.js"</span>;
-<a href=#43 id=43 data-nosnippet>43</a>        <span class="kw">let </span>react_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/generated/react.js"</span>;
-<a href=#44 id=44 data-nosnippet>44</a>        <span class="kw">let </span>ui_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/generated/ui.js"</span>;
+<a href=#41 id=41 data-nosnippet>41</a>        <span class="kw">let </span>jsx_runtime_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/gen/jsx-runtime.js"</span>;
+<a href=#42 id=42 data-nosnippet>42</a>        <span class="kw">let </span>raw_apis_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/gen/raw-apis.js"</span>;
+<a href=#43 id=43 data-nosnippet>43</a>        <span class="kw">let </span>react_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/gen/react.js"</span>;
+<a href=#44 id=44 data-nosnippet>44</a>        <span class="kw">let </span>ui_url = <span class="self">self</span>.base_url.clone() + <span class="string">"/gen/ui.js"</span>;
 <a href=#45 id=45 data-nosnippet>45</a>
 <a href=#46 id=46 data-nosnippet>46</a>        <span class="kw">let </span>bundler_options = BundlerOptions {
 <a href=#47 id=47 data-nosnippet>47</a>            input: <span class="prelude-val">Some</span>(<span class="macro">vec!</span>[<span class="self">self</span>.entry.into()]),
