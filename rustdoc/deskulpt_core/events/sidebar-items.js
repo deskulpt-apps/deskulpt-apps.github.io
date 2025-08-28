@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ShowToastPayload"],"trait":["EventsExt"]};
+window.SIDEBAR_ITEMS = {"enum":["ShowToastEvent"],"struct":["ExitAppEvent","RemoveWidgetsEvent","RenderWidgetsEvent","RenderWidgetsEventInner","SwitchThemeEvent","UpdateSettingsEvent"],"trait":["DeskulptEvent"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["proc_derive_deskulpt_event","proc_register_deskulpt_events"]};

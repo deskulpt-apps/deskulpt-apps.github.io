@@ -9,9 +9,9 @@
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>tauri::{App, AppHandle, Runtime};
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tokio::time::sleep;
 <a href=#11 id=11 data-nosnippet>11</a>
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><span class="kw">crate</span>::events::EventsExt;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><span class="kw">crate</span>::events::{DeskulptEvent, ExitAppEvent};
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><span class="kw">crate</span>::states::StatesExtCanvasImode;
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::window::WindowExt;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::window::{DeskulptWindow, WindowExt};
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a><span class="doccomment">/// Extention trait for system tray-related operations.
 <a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">pub trait </span>TrayExt&lt;R: Runtime&gt;: StatesExtCanvasImode&lt;R&gt; {
@@ -70,7 +70,7 @@
 <a href=#70 id=70 data-nosnippet>70</a>        <span class="string">"tray-exit" </span>=&gt; {
 <a href=#71 id=71 data-nosnippet>71</a>            <span class="comment">// Emit the "exit-app" event to the manager, which will invoke the
 <a href=#72 id=72 data-nosnippet>72</a>            // `exit_app` command to clean up and actually exit the application
-<a href=#73 id=73 data-nosnippet>73</a>            </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = app_handle.emit_exit_app_to_manager() {
+<a href=#73 id=73 data-nosnippet>73</a>            </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ExitAppEvent.emit_to(app_handle, DeskulptWindow::Manager) {
 <a href=#74 id=74 data-nosnippet>74</a>                <span class="macro">eprintln!</span>(<span class="string">"Failed to emit exit-app to manager: {e}"</span>);
 <a href=#75 id=75 data-nosnippet>75</a>                app_handle.exit(<span class="number">1</span>); <span class="comment">// Safeguard exit
 <a href=#76 id=76 data-nosnippet>76</a>            </span>}
