@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"derive":["DeskulptEvent"],"macro":["register_deskulpt_events"],"mod":["events"]};
+window.SIDEBAR_ITEMS = {"derive":["Persisted"],"mod":["persistence"]};
