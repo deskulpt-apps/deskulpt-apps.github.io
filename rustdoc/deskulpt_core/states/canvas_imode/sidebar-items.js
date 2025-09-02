@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["CanvasImode"],"struct":["CanvasImodeState","CanvasImodeStateInner"],"trait":["StatesExtCanvasImode"]};
+window.SIDEBAR_ITEMS = {"enum":["CanvasImode"],"struct":["CanvasImodeState","CanvasImodeStateInner"],"trait":["CanvasImodeStateExt"]};

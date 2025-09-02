@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["InitialRenderState"],"trait":["StatesExtInitialRender"]};
+window.SIDEBAR_ITEMS = {"struct":["InitialRenderState","InitialRenderStateInner"],"trait":["InitialRenderStateExt"]};

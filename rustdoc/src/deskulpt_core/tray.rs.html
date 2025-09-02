@@ -11,11 +11,11 @@
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>tokio::time::sleep;
 <a href=#12 id=12 data-nosnippet>12</a>
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><span class="kw">crate</span>::events::ExitAppEvent;
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::states::StatesExtCanvasImode;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::states::CanvasImodeStateExt;
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><span class="kw">crate</span>::window::{DeskulptWindow, WindowExt};
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="doccomment">/// Extention trait for system tray-related operations.
-<a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub trait </span>TrayExt&lt;R: Runtime&gt;: StatesExtCanvasImode&lt;R&gt; {
+<a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub trait </span>TrayExt&lt;R: Runtime&gt;: CanvasImodeStateExt&lt;R&gt; {
 <a href=#19 id=19 data-nosnippet>19</a>    <span class="doccomment">/// Create the system tray.
 <a href=#20 id=20 data-nosnippet>20</a>    </span><span class="kw">fn </span>create_tray(<span class="kw-2">&amp;</span><span class="self">self</span>, icon: Image) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt;
 <a href=#21 id=21 data-nosnippet>21</a>    <span class="kw">where
@@ -69,10 +69,10 @@
 <a href=#69 id=69 data-nosnippet>69</a>            }
 <a href=#70 id=70 data-nosnippet>70</a>        },
 <a href=#71 id=71 data-nosnippet>71</a>        <span class="string">"tray-exit" </span>=&gt; {
-<a href=#72 id=72 data-nosnippet>72</a>            <span class="comment">// Emit the "exit-app" event to the manager, which will invoke the
-<a href=#73 id=73 data-nosnippet>73</a>            // `exit_app` command to clean up and actually exit the application
+<a href=#72 id=72 data-nosnippet>72</a>            <span class="comment">// Emit the ExitAppEvent to the manager, which will invoke the
+<a href=#73 id=73 data-nosnippet>73</a>            // exit_app command to clean up and actually exit the application
 <a href=#74 id=74 data-nosnippet>74</a>            </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ExitAppEvent.emit_to(app_handle, DeskulptWindow::Manager) {
-<a href=#75 id=75 data-nosnippet>75</a>                <span class="macro">eprintln!</span>(<span class="string">"Failed to emit exit-app to manager: {e}"</span>);
+<a href=#75 id=75 data-nosnippet>75</a>                <span class="macro">eprintln!</span>(<span class="string">"Failed to emit ExitAppEvent to manager: {e}"</span>);
 <a href=#76 id=76 data-nosnippet>76</a>                app_handle.exit(<span class="number">1</span>); <span class="comment">// Safeguard exit
 <a href=#77 id=77 data-nosnippet>77</a>            </span>}
 <a href=#78 id=78 data-nosnippet>78</a>

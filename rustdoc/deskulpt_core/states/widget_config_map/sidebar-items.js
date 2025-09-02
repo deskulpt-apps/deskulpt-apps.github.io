@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["WidgetConfigMapState"],"trait":["StatesExtWidgetConfigMap"]};
+window.SIDEBAR_ITEMS = {"struct":["WidgetConfigMapState"],"trait":["WidgetConfigMapStateExt"]};
