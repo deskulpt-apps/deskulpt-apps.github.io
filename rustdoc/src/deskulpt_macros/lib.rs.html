@@ -10,21 +10,19 @@
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="doccomment">/// Derive the persisted version of a struct.
 <a href=#12 id=12 data-nosnippet>12</a>///
-<a href=#13 id=13 data-nosnippet>13</a>/// For `MyStruct`, this will generated a deserializable `MyStructPersisted`
-<a href=#14 id=14 data-nosnippet>14</a>/// struct with each field marked with `#[serde(default)]`. If a field needs a
-<a href=#15 id=15 data-nosnippet>15</a>/// custom default, it can be specified via `#[persisted(default = "...")]`
-<a href=#16 id=16 data-nosnippet>16</a>/// which has the same semantic as `#[serde(default = "...")]`.
-<a href=#17 id=17 data-nosnippet>17</a>///
-<a href=#18 id=18 data-nosnippet>18</a>/// By default each field will be persisted with its original type, but this can
-<a href=#19 id=19 data-nosnippet>19</a>/// be overridden via `#[persisted(type = "...")]`. This is useful for nested
-<a href=#20 id=20 data-nosnippet>20</a>/// persisted structs.
-<a href=#21 id=21 data-nosnippet>21</a>///
-<a href=#22 id=22 data-nosnippet>22</a>/// This macro will further implement `From&lt;MyStructPersisted&gt;` and
-<a href=#23 id=23 data-nosnippet>23</a>/// `FromPersisted&lt;MyStructPersisted&gt;` for `MyStruct`. The former is so that a
-<a href=#24 id=24 data-nosnippet>24</a>/// `MyStructPersisted` loaded from persistence can be easily converted to
-<a href=#25 id=25 data-nosnippet>25</a>/// `MyStruct` for use in the application. The latter is helpful for generating
-<a href=#26 id=26 data-nosnippet>26</a>/// automatic conversion implementations.
-<a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[proc_macro_derive(Persisted, attributes(persisted))]
-<a href=#28 id=28 data-nosnippet>28</a></span><span class="kw">pub fn </span>derive_persisted(input: TokenStream) -&gt; TokenStream {
-<a href=#29 id=29 data-nosnippet>29</a>    persistence::proc_derive_persisted(input)
-<a href=#30 id=30 data-nosnippet>30</a>}</code></pre></div></section></main></body></html>
+<a href=#13 id=13 data-nosnippet>13</a>/// For `MyStruct`, this will generate a `MyStructPersisted` struct like this:
+<a href=#14 id=14 data-nosnippet>14</a>///
+<a href=#15 id=15 data-nosnippet>15</a>/// - Derived: `Default`, `Deserialize`.
+<a href=#16 id=16 data-nosnippet>16</a>/// - Struct-level `#[serde(...)]` attributes are preserved.
+<a href=#17 id=17 data-nosnippet>17</a>/// - Each field has its original type, unless overridden via `#[persisted(type
+<a href=#18 id=18 data-nosnippet>18</a>///   = "...")]`.
+<a href=#19 id=19 data-nosnippet>19</a>/// - Each field is marked with `#[serde(default)]`, unless overridden via
+<a href=#20 id=20 data-nosnippet>20</a>///   `#[persisted(default = "...")]`.
+<a href=#21 id=21 data-nosnippet>21</a>/// - Field-level `#[serde(...)]` attributes are preserved. Note that they
+<a href=#22 id=22 data-nosnippet>22</a>///   cannot contain `default`.
+<a href=#23 id=23 data-nosnippet>23</a>/// - A `From&lt;MyStructPersisted&gt;` implementation for `MyStruct`.
+<a href=#24 id=24 data-nosnippet>24</a>/// - A `FromPersisted&lt;MyStructPersisted&gt;` implementation for `MyStruct`.
+<a href=#25 id=25 data-nosnippet>25</a></span><span class="attr">#[proc_macro_derive(Persisted, attributes(persisted))]
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub fn </span>derive_persisted(input: TokenStream) -&gt; TokenStream {
+<a href=#27 id=27 data-nosnippet>27</a>    persistence::proc_derive_persisted(input)
+<a href=#28 id=28 data-nosnippet>28</a>}</code></pre></div></section></main></body></html>
