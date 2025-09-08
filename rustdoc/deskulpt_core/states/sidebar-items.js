@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["canvas_imode","initial_render","widget_config_map"]};
+window.SIDEBAR_ITEMS = {"mod":["canvas_imode","initial_render","settings","widget_config_map"]};

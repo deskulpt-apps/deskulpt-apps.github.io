@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["ShortcutKey"],"macro":["impl_shortcuts"],"trait":["ShortcutsExt"]};

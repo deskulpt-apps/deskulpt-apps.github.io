@@ -53,7 +53,7 @@
 <a href=#53 id=53 data-nosnippet>53</a>/// This event is emitted from the backend to the canvas window when a toast
 <a href=#54 id=54 data-nosnippet>54</a>/// notification needs to be displayed.
 <a href=#55 id=55 data-nosnippet>55</a></span><span class="attr">#[derive(Clone, Serialize, Deserialize, specta::Type, Event)]
-<a href=#56 id=56 data-nosnippet>56</a>#[serde(tag = <span class="string">"type"</span>, content = <span class="string">"content"</span>, rename_all = <span class="string">"SCREAMING_SNAKE_CASE"</span>)]
+<a href=#56 id=56 data-nosnippet>56</a>#[serde(tag = <span class="string">"type"</span>, content = <span class="string">"content"</span>, rename_all = <span class="string">"camelCase"</span>)]
 <a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub enum </span>ShowToastEvent {
 <a href=#58 id=58 data-nosnippet>58</a>    <span class="doccomment">/// Show a [success](https://sonner.emilkowal.ski/toast#success) toast.
 <a href=#59 id=59 data-nosnippet>59</a>    </span>Success(String),

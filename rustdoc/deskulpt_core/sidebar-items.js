@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["bundler","commands","config","events","path","settings","shortcuts","states","tray","window"]};
+window.SIDEBAR_ITEMS = {"mod":["bundler","commands","config","events","path","schema","settings","states","tray","window"]};

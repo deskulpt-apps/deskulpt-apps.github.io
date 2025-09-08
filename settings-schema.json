@@ -31,7 +31,10 @@
         },
         "shortcuts": {
           "description": "The keyboard shortcuts.",
-          "$ref": "#/$defs/Shortcuts"
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       },
       "required": [
@@ -46,26 +49,6 @@
         "light",
         "dark"
       ]
-    },
-    "Shortcuts": {
-      "description": "Keyboard shortcuts registered in the application.\n\nA keyboard shortcut being `None` means that it is disabled, otherwise it is\na string parsable into [`Shortcut`](tauri_plugin_global_shortcut::Shortcut).",
-      "type": "object",
-      "properties": {
-        "toggleCanvasImode": {
-          "description": "For toggling canvas interaction mode.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "openManager": {
-          "description": "For opening the manager window.",
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
     },
     "WidgetSettings": {
       "description": "Per-widget settings.\n\nDifferent from widget configurations, these are independent of the widget\nconfiguration files and are managed internally by the application.",
