@@ -11,7 +11,7 @@
         &amp;self,
         key: <a class="enum" href="../../settings/enum.ShortcutKey.html" title="enum deskulpt_core::settings::ShortcutKey">ShortcutKey</a>,
         shortcut: <a class="enum" href="https://doc.rust-lang.org/1.90.0/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.90.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
-    ) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.98/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.90.0/std/primitive.unit.html">()</a>&gt; { ... }
+    ) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.100/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.90.0/std/primitive.unit.html">()</a>&gt; { ... }
 <span class="item-spacer"></span>    fn <a href="#method.update_settings_widget" class="fn">update_settings_widget</a>(&amp;self, id: <a class="struct" href="https://doc.rust-lang.org/1.90.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, update: <a class="struct" href="../../settings/struct.WidgetSettings.html" title="struct deskulpt_core::settings::WidgetSettings">WidgetSettings</a>) { ... }
 }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Extension trait for operations on the settings state.</p>
 </div></details><h2 id="provided-methods" class="section-header">Provided Methods<a href="#provided-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="method.manage_settings" class="method"><a class="src rightside" href="../../../src/deskulpt_core/states/settings.rs.html#22-32">Source</a><h4 class="code-header">fn <a href="#method.manage_settings" class="fn">manage_settings</a>(&amp;self)</h4></section></summary><div class="docblock"><p>Initialize state management for the settings.</p>
@@ -25,7 +25,7 @@ state that preserves as much persisted data as possible.</p>
     &amp;self,
     key: <a class="enum" href="../../settings/enum.ShortcutKey.html" title="enum deskulpt_core::settings::ShortcutKey">ShortcutKey</a>,
     shortcut: <a class="enum" href="https://doc.rust-lang.org/1.90.0/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.90.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
-) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.98/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.90.0/std/primitive.unit.html">()</a>&gt;</h4></section></summary><div class="docblock"><p>Update a shortcut.</p>
+) -&gt; <a class="type" href="https://docs.rs/anyhow/1.0.100/anyhow/type.Result.html" title="type anyhow::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.90.0/std/primitive.unit.html">()</a>&gt;</h4></section></summary><div class="docblock"><p>Update a shortcut.</p>
 <p>The side effect is that the involved shortcuts will be unregistered or
 registered. If the provided shortcut is <code>None</code>, it means removing that
 shortcut.</p>
