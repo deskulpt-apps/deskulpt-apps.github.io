@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["SettingsUpdate"],"fn":["bundle_widget","call_plugin","emit_on_render_ready","exit_app","open_widget","rescan_widgets","set_render_ready","update_settings"],"mod":["error"]};
+window.SIDEBAR_ITEMS = {"mod":["error"]};
