@@ -17,4 +17,25 @@
 <a href=#17 id=17 data-nosnippet>17</a><span class="doccomment">/// Re-exports for JSON schema generation.
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub mod </span>schema {
 <a href=#19 id=19 data-nosnippet>19</a>    <span class="kw">pub use </span><span class="kw">crate</span>::settings::Settings;
-<a href=#20 id=20 data-nosnippet>20</a>}</code></pre></div></section></main></body></html>
+<a href=#20 id=20 data-nosnippet>20</a>}
+<a href=#21 id=21 data-nosnippet>21</a>
+<a href=#22 id=22 data-nosnippet>22</a><span class="attr">#[doc(hidden)]
+<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">pub fn </span>configure_bindings_builder(builder: <span class="kw-2">&amp;mut </span>deskulpt_common::bindings::BindingsBuilder) {
+<a href=#24 id=24 data-nosnippet>24</a>    builder
+<a href=#25 id=25 data-nosnippet>25</a>        .commands(<span class="macro">deskulpt_common::bindings::collect_commands!</span>[
+<a href=#26 id=26 data-nosnippet>26</a>            commands::bundle_widget::&lt;tauri::Wry&gt;,
+<a href=#27 id=27 data-nosnippet>27</a>            commands::call_plugin::&lt;tauri::Wry&gt;,
+<a href=#28 id=28 data-nosnippet>28</a>            commands::emit_on_render_ready::&lt;tauri::Wry&gt;,
+<a href=#29 id=29 data-nosnippet>29</a>            commands::exit_app::&lt;tauri::Wry&gt;,
+<a href=#30 id=30 data-nosnippet>30</a>            commands::open_widget::&lt;tauri::Wry&gt;,
+<a href=#31 id=31 data-nosnippet>31</a>            commands::rescan_widgets::&lt;tauri::Wry&gt;,
+<a href=#32 id=32 data-nosnippet>32</a>            commands::set_render_ready::&lt;tauri::Wry&gt;,
+<a href=#33 id=33 data-nosnippet>33</a>            commands::update_settings::&lt;tauri::Wry&gt;,
+<a href=#34 id=34 data-nosnippet>34</a>        ])
+<a href=#35 id=35 data-nosnippet>35</a>        .event::&lt;events::ExitAppEvent&gt;()
+<a href=#36 id=36 data-nosnippet>36</a>        .event::&lt;events::RemoveWidgetsEvent&gt;()
+<a href=#37 id=37 data-nosnippet>37</a>        .event::&lt;events::RenderWidgetsEvent&gt;()
+<a href=#38 id=38 data-nosnippet>38</a>        .event::&lt;events::ShowToastEvent&gt;()
+<a href=#39 id=39 data-nosnippet>39</a>        .event::&lt;events::SwitchThemeEvent&gt;()
+<a href=#40 id=40 data-nosnippet>40</a>        .event::&lt;events::UpdateSettingsEvent&gt;();
+<a href=#41 id=41 data-nosnippet>41</a>}</code></pre></div></section></main></body></html>
