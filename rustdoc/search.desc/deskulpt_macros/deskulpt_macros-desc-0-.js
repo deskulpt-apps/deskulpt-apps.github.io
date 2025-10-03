@@ -1,1 +1,1 @@
-searchState.loadedDescShard("deskulpt_macros", 0, "This crate implements the procedural macros used by the …\nDerive the persisted version of a struct.\nInternals of Deskulpt persistence-related macros.\nToken stream processor for the <code>#[derive(Persisted)]</code> macro.")
+searchState.loadedDescShard("deskulpt_macros", 0, "This crate implements the procedural macros used by the …")

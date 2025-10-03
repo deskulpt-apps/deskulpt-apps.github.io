@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["proc_derive_persisted"]};

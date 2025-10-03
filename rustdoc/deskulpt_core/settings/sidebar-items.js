@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ShortcutKey","Theme"],"fn":["default_opacity"],"mod":["persistence","shortcuts"],"struct":["AppSettings","AppSettingsPersisted","Settings","SettingsPersisted","WidgetSettings","WidgetSettingsPersisted"]};
+window.SIDEBAR_ITEMS = {"enum":["ShortcutKey","Theme"],"mod":["persistence","shortcuts"],"struct":["AppSettings","Settings","WidgetSettings"]};

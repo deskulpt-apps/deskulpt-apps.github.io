@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"derive":["Persisted"],"mod":["persistence"]};
+window.SIDEBAR_ITEMS = {};

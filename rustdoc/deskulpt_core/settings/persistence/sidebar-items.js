@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"static":["SETTINGS_FILE","SETTINGS_SCHEMA_URL"],"struct":["SettingsWithMeta"],"trait":["FromPersisted"]};
+window.SIDEBAR_ITEMS = {"static":["SETTINGS_FILE","SETTINGS_SCHEMA_URL"],"struct":["SettingsWithMeta"]};
