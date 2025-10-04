@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["Bindings","BindingsBuilder"]};
+window.SIDEBAR_ITEMS = {"macro":["collect_commands","configure_bindings_builder"],"struct":["Bindings","BindingsBuilder"]};
