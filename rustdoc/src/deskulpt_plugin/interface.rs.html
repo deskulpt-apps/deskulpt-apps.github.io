@@ -33,7 +33,7 @@
 <a href=#33 id=33 data-nosnippet>33</a>    /// This method is a temporary implementation. The final implementation
 <a href=#34 id=34 data-nosnippet>34</a>    /// should use IPC to communicate with the Deskulpt core to get the widget
 <a href=#35 id=35 data-nosnippet>35</a>    /// directory.
-<a href=#36 id=36 data-nosnippet>36</a>    </span><span class="kw">pub fn </span>widget_dir&lt;S: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, id: S) -&gt; <span class="prelude-ty">Result</span>&lt;PathBuf&gt; {
-<a href=#37 id=37 data-nosnippet>37</a>        (<span class="self">self</span>.widget_dir_fn)(id.as_ref())
+<a href=#36 id=36 data-nosnippet>36</a>    </span><span class="kw">pub fn </span>widget_dir(<span class="kw-2">&amp;</span><span class="self">self</span>, id: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;PathBuf&gt; {
+<a href=#37 id=37 data-nosnippet>37</a>        (<span class="self">self</span>.widget_dir_fn)(id)
 <a href=#38 id=38 data-nosnippet>38</a>    }
 <a href=#39 id=39 data-nosnippet>39</a>}</code></pre></div></section></main></body></html>
