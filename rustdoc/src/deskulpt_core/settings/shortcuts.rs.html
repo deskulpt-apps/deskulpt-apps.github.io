@@ -58,10 +58,10 @@
 <a href=#58 id=58 data-nosnippet>58</a>    /// If any registration fails, instead of bailing out, it will remove that
 <a href=#59 id=59 data-nosnippet>59</a>    /// shortcut from the settings and silently continue.
 <a href=#60 id=60 data-nosnippet>60</a>    </span><span class="kw">pub fn </span>init_shortcuts&lt;R: Runtime&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, gs: <span class="kw-2">&amp;</span>GlobalShortcut&lt;R&gt;) {
-<a href=#61 id=61 data-nosnippet>61</a>        <span class="kw">for </span>(key, current) <span class="kw">in </span><span class="self">self</span>.app.shortcuts.clone() {
+<a href=#61 id=61 data-nosnippet>61</a>        <span class="kw">for </span>(key, current) <span class="kw">in </span><span class="self">self</span>.shortcuts.clone() {
 <a href=#62 id=62 data-nosnippet>62</a>            <span class="kw">if let </span><span class="prelude-val">Err</span>(e) = reregister_shortcut(gs, <span class="kw-2">&amp;</span>key, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>current)) {
 <a href=#63 id=63 data-nosnippet>63</a>                <span class="macro">eprintln!</span>(<span class="string">"Failed to register shortcut for {key:?}: {e}"</span>);
-<a href=#64 id=64 data-nosnippet>64</a>                <span class="self">self</span>.app.shortcuts.remove(<span class="kw-2">&amp;</span>key);
+<a href=#64 id=64 data-nosnippet>64</a>                <span class="self">self</span>.shortcuts.remove(<span class="kw-2">&amp;</span>key);
 <a href=#65 id=65 data-nosnippet>65</a>            }
 <a href=#66 id=66 data-nosnippet>66</a>        }
 <a href=#67 id=67 data-nosnippet>67</a>    }
@@ -80,14 +80,14 @@
 <a href=#80 id=80 data-nosnippet>80</a>        reregister_shortcut(
 <a href=#81 id=81 data-nosnippet>81</a>            gs,
 <a href=#82 id=82 data-nosnippet>82</a>            <span class="kw-2">&amp;</span>key,
-<a href=#83 id=83 data-nosnippet>83</a>            <span class="self">self</span>.app.shortcuts.get(<span class="kw-2">&amp;</span>key).map(|s| s.as_str()),
+<a href=#83 id=83 data-nosnippet>83</a>            <span class="self">self</span>.shortcuts.get(<span class="kw-2">&amp;</span>key).map(|s| s.as_str()),
 <a href=#84 id=84 data-nosnippet>84</a>            new.as_deref(),
 <a href=#85 id=85 data-nosnippet>85</a>        )<span class="question-mark">?</span>;
 <a href=#86 id=86 data-nosnippet>86</a>
 <a href=#87 id=87 data-nosnippet>87</a>        <span class="kw">if let </span><span class="prelude-val">Some</span>(shortcut) = new {
-<a href=#88 id=88 data-nosnippet>88</a>            <span class="self">self</span>.app.shortcuts.insert(key, shortcut);
+<a href=#88 id=88 data-nosnippet>88</a>            <span class="self">self</span>.shortcuts.insert(key, shortcut);
 <a href=#89 id=89 data-nosnippet>89</a>        } <span class="kw">else </span>{
-<a href=#90 id=90 data-nosnippet>90</a>            <span class="self">self</span>.app.shortcuts.remove(<span class="kw-2">&amp;</span>key);
+<a href=#90 id=90 data-nosnippet>90</a>            <span class="self">self</span>.shortcuts.remove(<span class="kw-2">&amp;</span>key);
 <a href=#91 id=91 data-nosnippet>91</a>        }
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>        <span class="prelude-val">Ok</span>(())
