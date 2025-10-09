@@ -74,20 +74,20 @@
 <a href=#74 id=74 data-nosnippet>74</a>    </span><span class="kw">pub fn </span>update_shortcut&lt;R: Runtime&gt;(
 <a href=#75 id=75 data-nosnippet>75</a>        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
 <a href=#76 id=76 data-nosnippet>76</a>        gs: <span class="kw-2">&amp;</span>GlobalShortcut&lt;R&gt;,
-<a href=#77 id=77 data-nosnippet>77</a>        key: ShortcutKey,
+<a href=#77 id=77 data-nosnippet>77</a>        key: <span class="kw-2">&amp;</span>ShortcutKey,
 <a href=#78 id=78 data-nosnippet>78</a>        new: <span class="prelude-ty">Option</span>&lt;String&gt;,
 <a href=#79 id=79 data-nosnippet>79</a>    ) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#80 id=80 data-nosnippet>80</a>        reregister_shortcut(
 <a href=#81 id=81 data-nosnippet>81</a>            gs,
-<a href=#82 id=82 data-nosnippet>82</a>            <span class="kw-2">&amp;</span>key,
-<a href=#83 id=83 data-nosnippet>83</a>            <span class="self">self</span>.shortcuts.get(<span class="kw-2">&amp;</span>key).map(|s| s.as_str()),
+<a href=#82 id=82 data-nosnippet>82</a>            key,
+<a href=#83 id=83 data-nosnippet>83</a>            <span class="self">self</span>.shortcuts.get(key).map(|s| s.as_str()),
 <a href=#84 id=84 data-nosnippet>84</a>            new.as_deref(),
 <a href=#85 id=85 data-nosnippet>85</a>        )<span class="question-mark">?</span>;
 <a href=#86 id=86 data-nosnippet>86</a>
 <a href=#87 id=87 data-nosnippet>87</a>        <span class="kw">if let </span><span class="prelude-val">Some</span>(shortcut) = new {
-<a href=#88 id=88 data-nosnippet>88</a>            <span class="self">self</span>.shortcuts.insert(key, shortcut);
+<a href=#88 id=88 data-nosnippet>88</a>            <span class="self">self</span>.shortcuts.insert(key.clone(), shortcut);
 <a href=#89 id=89 data-nosnippet>89</a>        } <span class="kw">else </span>{
-<a href=#90 id=90 data-nosnippet>90</a>            <span class="self">self</span>.shortcuts.remove(<span class="kw-2">&amp;</span>key);
+<a href=#90 id=90 data-nosnippet>90</a>            <span class="self">self</span>.shortcuts.remove(key);
 <a href=#91 id=91 data-nosnippet>91</a>        }
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>        <span class="prelude-val">Ok</span>(())

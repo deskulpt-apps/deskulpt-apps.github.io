@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ShortcutKey","Theme"],"mod":["persistence","shortcuts"],"struct":["Settings","WidgetSettings"]};
+window.SIDEBAR_ITEMS = {"enum":["ShortcutKey","Theme"],"mod":["persistence","shortcuts"],"struct":["Settings","SettingsPatch","WidgetSettings","WidgetSettingsPatch"]};
