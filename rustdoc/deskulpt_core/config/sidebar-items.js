@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["WidgetConfig"],"struct":["DeskulptConf","PackageJson"],"trait":["LoadFromFile"]};
+window.SIDEBAR_ITEMS = {"enum":["WidgetConfig"],"struct":["DeskulptConf","PackageJson","WidgetCatalog"],"trait":["LoadFromFile"]};

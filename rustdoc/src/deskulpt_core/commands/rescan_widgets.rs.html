@@ -8,7 +8,7 @@
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::config::WidgetConfig;
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><span class="kw">crate</span>::events::UpdateSettingsEvent;
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><span class="kw">crate</span>::path::PathExt;
-<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><span class="kw">crate</span>::states::{SettingsStateExt, WidgetConfigMapStateExt};
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><span class="kw">crate</span>::states::{SettingsStateExt, WidgetCatalogStateExt};
 <a href=#12 id=12 data-nosnippet>12</a>
 <a href=#13 id=13 data-nosnippet>13</a><span class="doccomment">/// Rescan the widgets directory and update the widget configuration map.
 <a href=#14 id=14 data-nosnippet>14</a>///
@@ -60,8 +60,8 @@
 <a href=#60 id=60 data-nosnippet>60</a>        UpdateSettingsEvent(settings.clone()).emit(<span class="kw-2">&amp;</span>app_handle)<span class="question-mark">?</span>;
 <a href=#61 id=61 data-nosnippet>61</a>    }
 <a href=#62 id=62 data-nosnippet>62</a>
-<a href=#63 id=63 data-nosnippet>63</a>    app_handle.with_widget_config_map_mut(|config_map| {
-<a href=#64 id=64 data-nosnippet>64</a>        config_map.clone_from(<span class="kw-2">&amp;</span>new_config_map);
+<a href=#63 id=63 data-nosnippet>63</a>    app_handle.with_widget_catalog_mut(|catalog| {
+<a href=#64 id=64 data-nosnippet>64</a>        catalog.configs.clone_from(<span class="kw-2">&amp;</span>new_config_map);
 <a href=#65 id=65 data-nosnippet>65</a>    });
 <a href=#66 id=66 data-nosnippet>66</a>    <span class="prelude-val">Ok</span>(new_config_map)
 <a href=#67 id=67 data-nosnippet>67</a>}</code></pre></div></section></main></body></html>
