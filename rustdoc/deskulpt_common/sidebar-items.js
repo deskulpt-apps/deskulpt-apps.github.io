@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["bindings","event","init","window"]};
+window.SIDEBAR_ITEMS = {"mod":["bindings","event","init","outcome","window"]};
