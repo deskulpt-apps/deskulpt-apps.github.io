@@ -2,41 +2,47 @@
 <a href=#2 id=2 data-nosnippet>2</a><span class="kw">use </span>tauri::{command, AppHandle, Runtime};
 <a href=#3 id=3 data-nosnippet>3</a>
 <a href=#4 id=4 data-nosnippet>4</a><span class="kw">use </span><span class="kw">super</span>::error::CmdResult;
-<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span><span class="kw">crate</span>::config::WidgetCatalog;
-<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><span class="kw">crate</span>::events::UpdateSettingsEvent;
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><span class="kw">crate</span>::path::PathExt;
-<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::states::{SettingsStateExt, WidgetCatalogStateExt};
-<a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="doccomment">/// Rescan the widgets directory and update the widget configuration map.
-<a href=#11 id=11 data-nosnippet>11</a>///
-<a href=#12 id=12 data-nosnippet>12</a>/// This will update the widget configuration map state and return the updated
-<a href=#13 id=13 data-nosnippet>13</a>/// configuration map as well.
-<a href=#14 id=14 data-nosnippet>14</a>///
-<a href=#15 id=15 data-nosnippet>15</a>/// ### Errors
-<a href=#16 id=16 data-nosnippet>16</a>///
-<a href=#17 id=17 data-nosnippet>17</a>/// - Failed to access the widgets directory.
-<a href=#18 id=18 data-nosnippet>18</a>/// - Error traversing the widgets directory.
-<a href=#19 id=19 data-nosnippet>19</a>/// - Error inferring widget ID from the directory entry.
-<a href=#20 id=20 data-nosnippet>20</a></span><span class="attr">#[command]
-<a href=#21 id=21 data-nosnippet>21</a>#[specta::specta]
-<a href=#22 id=22 data-nosnippet>22</a></span><span class="kw">pub async fn </span>rescan_widgets&lt;R: Runtime&gt;(app_handle: AppHandle&lt;R&gt;) -&gt; CmdResult&lt;WidgetCatalog&gt; {
-<a href=#23 id=23 data-nosnippet>23</a>    <span class="kw">let </span>widgets_dir = app_handle.widgets_dir()<span class="question-mark">?</span>;
-<a href=#24 id=24 data-nosnippet>24</a>    <span class="kw">let </span>new_catalog = WidgetCatalog::load(widgets_dir)<span class="question-mark">?</span>;
-<a href=#25 id=25 data-nosnippet>25</a>
-<a href=#26 id=26 data-nosnippet>26</a>    {
-<a href=#27 id=27 data-nosnippet>27</a>        <span class="kw">let </span><span class="kw-2">mut </span>settings = app_handle.get_settings_mut();
-<a href=#28 id=28 data-nosnippet>28</a>        settings
-<a href=#29 id=29 data-nosnippet>29</a>            .widgets
-<a href=#30 id=30 data-nosnippet>30</a>            .retain(|id, <span class="kw">_</span>| new_catalog.<span class="number">0</span>.contains_key(id));
-<a href=#31 id=31 data-nosnippet>31</a>        <span class="kw">for </span>id <span class="kw">in </span>new_catalog.<span class="number">0</span>.keys() {
-<a href=#32 id=32 data-nosnippet>32</a>            settings
-<a href=#33 id=33 data-nosnippet>33</a>                .widgets
-<a href=#34 id=34 data-nosnippet>34</a>                .entry(id.clone())
-<a href=#35 id=35 data-nosnippet>35</a>                .or_insert_with(Default::default);
-<a href=#36 id=36 data-nosnippet>36</a>        }
-<a href=#37 id=37 data-nosnippet>37</a>        UpdateSettingsEvent(settings.clone()).emit(<span class="kw-2">&amp;</span>app_handle)<span class="question-mark">?</span>;
-<a href=#38 id=38 data-nosnippet>38</a>    }
-<a href=#39 id=39 data-nosnippet>39</a>
-<a href=#40 id=40 data-nosnippet>40</a>    <span class="kw-2">*</span>app_handle.get_widget_catalog_mut() = new_catalog.clone();
-<a href=#41 id=41 data-nosnippet>41</a>    <span class="prelude-val">Ok</span>(new_catalog)
-<a href=#42 id=42 data-nosnippet>42</a>}</code></pre></div></section></main></body></html>
+<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span><span class="kw">crate</span>::commands::bundle_widgets;
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><span class="kw">crate</span>::config::WidgetCatalog;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><span class="kw">crate</span>::events::{UpdateSettingsEvent, UpdateWidgetCatalogEvent};
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::path::PathExt;
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><span class="kw">crate</span>::states::{SettingsStateExt, WidgetCatalogStateExt};
+<a href=#10 id=10 data-nosnippet>10</a>
+<a href=#11 id=11 data-nosnippet>11</a><span class="doccomment">/// Rescan the widgets directory to discover widgets.
+<a href=#12 id=12 data-nosnippet>12</a>///
+<a href=#13 id=13 data-nosnippet>13</a>/// This command scans the widgets directory for available widgets and updates
+<a href=#14 id=14 data-nosnippet>14</a>/// the widget catalog and settings accordingly. It then emits events to notify
+<a href=#15 id=15 data-nosnippet>15</a>/// the frontend of these changes. Finally, it triggers the bundling of all
+<a href=#16 id=16 data-nosnippet>16</a>/// widgets in the updated catalog with `bundle_widgets` to ensure they are
+<a href=#17 id=17 data-nosnippet>17</a>/// ready for use.
+<a href=#18 id=18 data-nosnippet>18</a>///
+<a href=#19 id=19 data-nosnippet>19</a>/// ### Errors
+<a href=#20 id=20 data-nosnippet>20</a>///
+<a href=#21 id=21 data-nosnippet>21</a>/// - Error accessing the widgets directory.
+<a href=#22 id=22 data-nosnippet>22</a>/// - Error loading the new widget catalog from the widgets directory.
+<a href=#23 id=23 data-nosnippet>23</a>/// - Error emitting the [`UpdateSettingsEvent`].
+<a href=#24 id=24 data-nosnippet>24</a>/// - Error emitting the [`UpdateWidgetCatalogEvent`].
+<a href=#25 id=25 data-nosnippet>25</a>/// - Error bundling all discovered widgets.
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="attr">#[command]
+<a href=#27 id=27 data-nosnippet>27</a>#[specta::specta]
+<a href=#28 id=28 data-nosnippet>28</a></span><span class="kw">pub async fn </span>rescan_widgets&lt;R: Runtime&gt;(app_handle: AppHandle&lt;R&gt;) -&gt; CmdResult&lt;()&gt; {
+<a href=#29 id=29 data-nosnippet>29</a>    <span class="kw">let </span>catalog = WidgetCatalog::load(app_handle.widgets_dir()<span class="question-mark">?</span>)<span class="question-mark">?</span>;
+<a href=#30 id=30 data-nosnippet>30</a>    <span class="kw-2">*</span>app_handle.get_widget_catalog_mut() = catalog.clone();
+<a href=#31 id=31 data-nosnippet>31</a>
+<a href=#32 id=32 data-nosnippet>32</a>    {
+<a href=#33 id=33 data-nosnippet>33</a>        <span class="kw">let </span><span class="kw-2">mut </span>settings = app_handle.get_settings_mut();
+<a href=#34 id=34 data-nosnippet>34</a>        settings.widgets.retain(|id, <span class="kw">_</span>| catalog.<span class="number">0</span>.contains_key(id));
+<a href=#35 id=35 data-nosnippet>35</a>        <span class="kw">for </span>id <span class="kw">in </span>catalog.<span class="number">0</span>.keys() {
+<a href=#36 id=36 data-nosnippet>36</a>            settings
+<a href=#37 id=37 data-nosnippet>37</a>                .widgets
+<a href=#38 id=38 data-nosnippet>38</a>                .entry(id.clone())
+<a href=#39 id=39 data-nosnippet>39</a>                .or_insert_with(Default::default);
+<a href=#40 id=40 data-nosnippet>40</a>        }
+<a href=#41 id=41 data-nosnippet>41</a>        UpdateSettingsEvent(settings.clone()).emit(<span class="kw-2">&amp;</span>app_handle)<span class="question-mark">?</span>;
+<a href=#42 id=42 data-nosnippet>42</a>    }
+<a href=#43 id=43 data-nosnippet>43</a>
+<a href=#44 id=44 data-nosnippet>44</a>    UpdateWidgetCatalogEvent(catalog).emit(<span class="kw-2">&amp;</span>app_handle)<span class="question-mark">?</span>;
+<a href=#45 id=45 data-nosnippet>45</a>
+<a href=#46 id=46 data-nosnippet>46</a>    bundle_widgets(app_handle, <span class="prelude-val">None</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+<a href=#47 id=47 data-nosnippet>47</a>    <span class="prelude-val">Ok</span>(())
+<a href=#48 id=48 data-nosnippet>48</a>}</code></pre></div></section></main></body></html>
