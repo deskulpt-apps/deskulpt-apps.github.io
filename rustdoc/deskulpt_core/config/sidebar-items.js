@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["DeskulptConf","PackageJson","WidgetCatalog","WidgetConfig"],"trait":["LoadFromFile"]};
+window.SIDEBAR_ITEMS = {"struct":["PackageManifest","WidgetCatalog","WidgetConfig","WidgetManifest"],"trait":["LoadManifest"]};
