@@ -70,7 +70,7 @@
 <a href=#70 id=70 data-nosnippet>70</a>}
 <a href=#71 id=71 data-nosnippet>71</a>
 <a href=#72 id=72 data-nosnippet>72</a><span class="doccomment">/// Full configuration of a Deskulpt widget.
-<a href=#73 id=73 data-nosnippet>73</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize, specta::Type)]
+<a href=#73 id=73 data-nosnippet>73</a></span><span class="attr">#[derive(Debug, Serialize, Deserialize, specta::Type)]
 <a href=#74 id=74 data-nosnippet>74</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#75 id=75 data-nosnippet>75</a></span><span class="kw">pub struct </span>WidgetConfig {
 <a href=#76 id=76 data-nosnippet>76</a>    <span class="doccomment">/// The name of the widget.
@@ -112,7 +112,7 @@
 <a href=#112 id=112 data-nosnippet>112</a>/// This is a collection of all widgets discovered locally, mapped from their
 <a href=#113 id=113 data-nosnippet>113</a>/// widget IDs to their configurations. Invalid widgets are also included with
 <a href=#114 id=114 data-nosnippet>114</a>/// their error messages.
-<a href=#115 id=115 data-nosnippet>115</a></span><span class="attr">#[derive(Debug, Default, Clone, Serialize, Deserialize, specta::Type)]
+<a href=#115 id=115 data-nosnippet>115</a></span><span class="attr">#[derive(Debug, Default, Serialize, Deserialize, specta::Type)]
 <a href=#116 id=116 data-nosnippet>116</a></span><span class="kw">pub struct </span>WidgetCatalog(<span class="kw">pub </span>BTreeMap&lt;String, Outcome&lt;WidgetConfig&gt;&gt;);
 <a href=#117 id=117 data-nosnippet>117</a>
 <a href=#118 id=118 data-nosnippet>118</a><span class="kw">impl </span>WidgetCatalog {
