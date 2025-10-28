@@ -35,7 +35,7 @@
 <a href=#35 id=35 data-nosnippet>35</a>/// Different from widget configurations, these are independent of the widget
 <a href=#36 id=36 data-nosnippet>36</a>/// configuration files and are managed internally by the application.
 <a href=#37 id=37 data-nosnippet>37</a></span><span class="attr">#[serde_as]
-<a href=#38 id=38 data-nosnippet>38</a>#[derive(Debug, Clone, Deserialize, Serialize, JsonSchema, specta::Type)]
+<a href=#38 id=38 data-nosnippet>38</a>#[derive(Debug, Deserialize, Serialize, JsonSchema, specta::Type)]
 <a href=#39 id=39 data-nosnippet>39</a>#[serde(rename_all = <span class="string">"camelCase"</span>, default)]
 <a href=#40 id=40 data-nosnippet>40</a></span><span class="kw">pub struct </span>WidgetSettings {
 <a href=#41 id=41 data-nosnippet>41</a>    <span class="doccomment">/// The leftmost x-coordinate in pixels.
@@ -107,7 +107,7 @@
 <a href=#107 id=107 data-nosnippet>107</a>
 <a href=#108 id=108 data-nosnippet>108</a><span class="doccomment">/// Full settings of the Deskulpt application.
 <a href=#109 id=109 data-nosnippet>109</a></span><span class="attr">#[serde_as]
-<a href=#110 id=110 data-nosnippet>110</a>#[derive(Debug, Clone, Default, Deserialize, Serialize, JsonSchema, specta::Type)]
+<a href=#110 id=110 data-nosnippet>110</a>#[derive(Debug, Default, Deserialize, Serialize, JsonSchema, specta::Type)]
 <a href=#111 id=111 data-nosnippet>111</a>#[serde(rename_all = <span class="string">"camelCase"</span>, default)]
 <a href=#112 id=112 data-nosnippet>112</a></span><span class="kw">pub struct </span>Settings {
 <a href=#113 id=113 data-nosnippet>113</a>    <span class="doccomment">/// The application theme.

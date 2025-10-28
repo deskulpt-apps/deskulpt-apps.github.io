@@ -23,8 +23,8 @@
 <a href=#23 id=23 data-nosnippet>23</a>) -&gt; CmdResult&lt;()&gt; {
 <a href=#24 id=24 data-nosnippet>24</a>    app_handle.apply_settings_patch(patch)<span class="question-mark">?</span>;
 <a href=#25 id=25 data-nosnippet>25</a>
-<a href=#26 id=26 data-nosnippet>26</a>    <span class="kw">let </span>settings = app_handle.get_settings().clone();
-<a href=#27 id=27 data-nosnippet>27</a>    UpdateSettingsEvent(settings).emit(<span class="kw-2">&amp;</span>app_handle)<span class="question-mark">?</span>;
+<a href=#26 id=26 data-nosnippet>26</a>    <span class="kw">let </span>settings = app_handle.get_settings();
+<a href=#27 id=27 data-nosnippet>27</a>    UpdateSettingsEvent(<span class="kw-2">&amp;</span>settings).emit(<span class="kw-2">&amp;</span>app_handle)<span class="question-mark">?</span>;
 <a href=#28 id=28 data-nosnippet>28</a>
 <a href=#29 id=29 data-nosnippet>29</a>    <span class="prelude-val">Ok</span>(())
 <a href=#30 id=30 data-nosnippet>30</a>}</code></pre></div></section></main></body></html>
