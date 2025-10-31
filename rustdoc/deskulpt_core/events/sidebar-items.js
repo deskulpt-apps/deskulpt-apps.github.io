@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ShowToastEvent"],"struct":["RenderWidgetsEvent","UpdateSettingsEvent","UpdateWidgetCatalogEvent"]};
+window.SIDEBAR_ITEMS = {"enum":["ShowToastEvent"],"struct":["RenderWidgetEvent","UpdateSettingsEvent","UpdateWidgetCatalogEvent"]};

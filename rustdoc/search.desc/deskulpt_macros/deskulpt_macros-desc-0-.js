@@ -1,1 +1,0 @@
-searchState.loadedDescShard("deskulpt_macros", 0, "This crate implements the procedural macros used by the …\nInternals for the <code>Event</code> derive macro.\nToken stream processor for the <code>Event</code> derive macro.")

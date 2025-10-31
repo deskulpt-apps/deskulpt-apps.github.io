@@ -1,1 +1,0 @@
-searchState.loadedDescShard("deskulpt_workspace", 0, "This crate implements built-time utilities for the Deskulpt…\nGet the directory of a crate in the workspace.\nGet the docs directory of the workspace.\nGet the directory of a package in the workspace.\nGet the root directory of the workspace.")
