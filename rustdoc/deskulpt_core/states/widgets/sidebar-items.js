@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["render_worker"],"struct":["RenderWidgetTask","WidgetsState"],"trait":["WidgetsStateExt"]};

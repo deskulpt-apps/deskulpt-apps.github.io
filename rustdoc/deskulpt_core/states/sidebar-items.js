@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["canvas_imode","settings","setup","widget_catalog"]};
+window.SIDEBAR_ITEMS = {"mod":["canvas_imode","settings","setup","widgets"]};
