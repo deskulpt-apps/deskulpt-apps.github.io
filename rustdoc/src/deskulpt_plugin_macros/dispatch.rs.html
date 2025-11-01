@@ -2,7 +2,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>
 <a href=#3 id=3 data-nosnippet>3</a></span><span class="kw">use </span>proc_macro::TokenStream;
 <a href=#4 id=4 data-nosnippet>4</a><span class="kw">use </span>quote::ToTokens;
-<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span>syn::{parse_macro_input, parse_quote, FnArg, ItemFn, Pat, PatType, ReturnType};
+<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span>syn::{FnArg, ItemFn, Pat, PatType, ReturnType, parse_macro_input, parse_quote};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="doccomment">/// Token stream processor for the `#[dispatch]` macro.
 <a href=#8 id=8 data-nosnippet>8</a>///
@@ -23,34 +23,33 @@
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a>    <span class="kw">let </span><span class="kw-2">mut </span>input_type = <span class="prelude-val">None</span>;
 <a href=#25 id=25 data-nosnippet>25</a>    <span class="kw">for </span>arg <span class="kw">in </span><span class="kw-2">&amp;mut </span>meth.sig.inputs {
-<a href=#26 id=26 data-nosnippet>26</a>        <span class="kw">if let </span>FnArg::Typed(PatType { pat, ty, .. }) = arg {
-<a href=#27 id=27 data-nosnippet>27</a>            <span class="kw">if let </span>Pat::Ident(ident) = <span class="kw-2">&amp;**</span>pat {
-<a href=#28 id=28 data-nosnippet>28</a>                <span class="kw">if </span>ident.ident == <span class="string">"input" </span>{
-<a href=#29 id=29 data-nosnippet>29</a>                    input_type = <span class="prelude-val">Some</span>(ty.clone());
-<a href=#30 id=30 data-nosnippet>30</a>                    <span class="kw-2">*</span>ty = Box::new(<span class="macro">parse_quote!</span>(::deskulpt_plugin::serde_json::Value));
-<a href=#31 id=31 data-nosnippet>31</a>                }
-<a href=#32 id=32 data-nosnippet>32</a>            }
-<a href=#33 id=33 data-nosnippet>33</a>        }
-<a href=#34 id=34 data-nosnippet>34</a>    }
-<a href=#35 id=35 data-nosnippet>35</a>    <span class="kw">let </span>input_type = input_type.expect(<span class="string">"Missing `input` parameter"</span>);
-<a href=#36 id=36 data-nosnippet>36</a>
-<a href=#37 id=37 data-nosnippet>37</a>    <span class="kw">let </span>output_type = <span class="kw">if let </span>ReturnType::Type(<span class="kw">_</span>, ty) = meth.sig.output {
-<a href=#38 id=38 data-nosnippet>38</a>        ty
-<a href=#39 id=39 data-nosnippet>39</a>    } <span class="kw">else </span>{
-<a href=#40 id=40 data-nosnippet>40</a>        <span class="macro">panic!</span>(<span class="string">"Return type must be specified"</span>);
-<a href=#41 id=41 data-nosnippet>41</a>    };
-<a href=#42 id=42 data-nosnippet>42</a>    meth.sig.output =
-<a href=#43 id=43 data-nosnippet>43</a>        <span class="macro">parse_quote!</span>(-&gt; ::deskulpt_plugin::anyhow::Result&lt;::deskulpt_plugin::serde_json::Value&gt;);
-<a href=#44 id=44 data-nosnippet>44</a>
-<a href=#45 id=45 data-nosnippet>45</a>    <span class="kw">let </span>original_body = meth.block.clone();
-<a href=#46 id=46 data-nosnippet>46</a>    meth.block = Box::new(<span class="macro">parse_quote!</span>({
-<a href=#47 id=47 data-nosnippet>47</a>        <span class="kw">let </span>context = <span class="macro">format!</span>(<span class="string">"Failed to deserialize input: {:?}"</span>, input);
-<a href=#48 id=48 data-nosnippet>48</a>        <span class="kw">let </span>input: #input_type = ::deskulpt_plugin::anyhow::Context::context(::deskulpt_plugin::serde_json::from_value(input), context)<span class="question-mark">?</span>;
-<a href=#49 id=49 data-nosnippet>49</a>        <span class="kw">let </span>result: #output_type = #original_body;
-<a href=#50 id=50 data-nosnippet>50</a>        <span class="kw">let </span>result = result<span class="question-mark">?</span>;
-<a href=#51 id=51 data-nosnippet>51</a>        <span class="kw">let </span>output = ::deskulpt_plugin::anyhow::Context::context(::deskulpt_plugin::serde_json::to_value(result), <span class="string">"Failed to serialize output"</span>)<span class="question-mark">?</span>;
-<a href=#52 id=52 data-nosnippet>52</a>        <span class="prelude-val">Ok</span>(output)
-<a href=#53 id=53 data-nosnippet>53</a>    }));
-<a href=#54 id=54 data-nosnippet>54</a>
-<a href=#55 id=55 data-nosnippet>55</a>    meth.into_token_stream().into()
-<a href=#56 id=56 data-nosnippet>56</a>}</code></pre></div></section></main></body></html>
+<a href=#26 id=26 data-nosnippet>26</a>        <span class="kw">if let </span>FnArg::Typed(PatType { pat, ty, .. }) = arg
+<a href=#27 id=27 data-nosnippet>27</a>            &amp;&amp; <span class="kw">let </span>Pat::Ident(ident) = <span class="kw-2">&amp;**</span>pat
+<a href=#28 id=28 data-nosnippet>28</a>            &amp;&amp; ident.ident == <span class="string">"input"
+<a href=#29 id=29 data-nosnippet>29</a>        </span>{
+<a href=#30 id=30 data-nosnippet>30</a>            input_type = <span class="prelude-val">Some</span>(ty.clone());
+<a href=#31 id=31 data-nosnippet>31</a>            <span class="kw-2">*</span>ty = Box::new(<span class="macro">parse_quote!</span>(::deskulpt_plugin::serde_json::Value));
+<a href=#32 id=32 data-nosnippet>32</a>        }
+<a href=#33 id=33 data-nosnippet>33</a>    }
+<a href=#34 id=34 data-nosnippet>34</a>    <span class="kw">let </span>input_type = input_type.expect(<span class="string">"Missing `input` parameter"</span>);
+<a href=#35 id=35 data-nosnippet>35</a>
+<a href=#36 id=36 data-nosnippet>36</a>    <span class="kw">let </span>output_type = <span class="kw">if let </span>ReturnType::Type(<span class="kw">_</span>, ty) = meth.sig.output {
+<a href=#37 id=37 data-nosnippet>37</a>        ty
+<a href=#38 id=38 data-nosnippet>38</a>    } <span class="kw">else </span>{
+<a href=#39 id=39 data-nosnippet>39</a>        <span class="macro">panic!</span>(<span class="string">"Return type must be specified"</span>);
+<a href=#40 id=40 data-nosnippet>40</a>    };
+<a href=#41 id=41 data-nosnippet>41</a>    meth.sig.output =
+<a href=#42 id=42 data-nosnippet>42</a>        <span class="macro">parse_quote!</span>(-&gt; ::deskulpt_plugin::anyhow::Result&lt;::deskulpt_plugin::serde_json::Value&gt;);
+<a href=#43 id=43 data-nosnippet>43</a>
+<a href=#44 id=44 data-nosnippet>44</a>    <span class="kw">let </span>original_body = meth.block.clone();
+<a href=#45 id=45 data-nosnippet>45</a>    meth.block = Box::new(<span class="macro">parse_quote!</span>({
+<a href=#46 id=46 data-nosnippet>46</a>        <span class="kw">let </span>context = <span class="macro">format!</span>(<span class="string">"Failed to deserialize input: {:?}"</span>, input);
+<a href=#47 id=47 data-nosnippet>47</a>        <span class="kw">let </span>input: #input_type = ::deskulpt_plugin::anyhow::Context::context(::deskulpt_plugin::serde_json::from_value(input), context)<span class="question-mark">?</span>;
+<a href=#48 id=48 data-nosnippet>48</a>        <span class="kw">let </span>result: #output_type = #original_body;
+<a href=#49 id=49 data-nosnippet>49</a>        <span class="kw">let </span>result = result<span class="question-mark">?</span>;
+<a href=#50 id=50 data-nosnippet>50</a>        <span class="kw">let </span>output = ::deskulpt_plugin::anyhow::Context::context(::deskulpt_plugin::serde_json::to_value(result), <span class="string">"Failed to serialize output"</span>)<span class="question-mark">?</span>;
+<a href=#51 id=51 data-nosnippet>51</a>        <span class="prelude-val">Ok</span>(output)
+<a href=#52 id=52 data-nosnippet>52</a>    }));
+<a href=#53 id=53 data-nosnippet>53</a>
+<a href=#54 id=54 data-nosnippet>54</a>    meth.into_token_stream().into()
+<a href=#55 id=55 data-nosnippet>55</a>}</code></pre></div></section></main></body></html>

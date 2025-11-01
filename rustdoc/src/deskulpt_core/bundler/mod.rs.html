@@ -6,7 +6,7 @@
 <a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span>std::sync::Arc;
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>alias::AliasPlugin;
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>anyhow::{anyhow, bail, <span class="prelude-ty">Result</span>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>anyhow::{<span class="prelude-ty">Result</span>, anyhow, bail};
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>either::Either;
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>rolldown::{
 <a href=#12 id=12 data-nosnippet>12</a>    Bundler, BundlerOptions, BundlerTransformOptions, JsxOptions, OutputFormat, Platform,
@@ -98,30 +98,31 @@
 <a href=#98 id=98 data-nosnippet>98</a>    <span class="doccomment">/// Bundle the widget into a single ESM code string.
 <a href=#99 id=99 data-nosnippet>99</a>    </span><span class="kw">pub async fn </span>bundle(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;String&gt; {
 <a href=#100 id=100 data-nosnippet>100</a>        <span class="kw">let </span>result = <span class="self">self</span>.bundler.generate().<span class="kw">await</span>.map_err(|e| {
-<a href=#101 id=101 data-nosnippet>101</a>            <span class="macro">anyhow!</span>(e
-<a href=#102 id=102 data-nosnippet>102</a>                .into_vec()
-<a href=#103 id=103 data-nosnippet>103</a>                .iter()
-<a href=#104 id=104 data-nosnippet>104</a>                .map(|diagnostic| diagnostic.to_diagnostic().to_string())
-<a href=#105 id=105 data-nosnippet>105</a>                .collect::&lt;Vec&lt;String&gt;&gt;()
-<a href=#106 id=106 data-nosnippet>106</a>                .join(<span class="string">"\n"</span>))
-<a href=#107 id=107 data-nosnippet>107</a>        })<span class="question-mark">?</span>;
-<a href=#108 id=108 data-nosnippet>108</a>
-<a href=#109 id=109 data-nosnippet>109</a>        <span class="comment">// We have supplied a single entry file, so we expect a single output
-<a href=#110 id=110 data-nosnippet>110</a>        // bundle; this can be broken if widget code contains e.g. dynamic
-<a href=#111 id=111 data-nosnippet>111</a>        // imports, which we do not allow
-<a href=#112 id=112 data-nosnippet>112</a>        </span><span class="kw">if </span>result.assets.len() != <span class="number">1 </span>{
-<a href=#113 id=113 data-nosnippet>113</a>            <span class="macro">bail!</span>(
-<a href=#114 id=114 data-nosnippet>114</a>                <span class="string">"Expected 1 bundled output, found {}; ensure that widget code does not contain \
-<a href=#115 id=115 data-nosnippet>115</a>                 e.g. dynamic imports that may result in extra chunks"</span>,
-<a href=#116 id=116 data-nosnippet>116</a>                result.assets.len()
-<a href=#117 id=117 data-nosnippet>117</a>            );
-<a href=#118 id=118 data-nosnippet>118</a>        }
-<a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a>        <span class="kw">let </span>output = <span class="kw-2">&amp;</span>result.assets[<span class="number">0</span>];
-<a href=#121 id=121 data-nosnippet>121</a>        <span class="kw">let </span>code = <span class="kw">match </span>output {
-<a href=#122 id=122 data-nosnippet>122</a>            Output::Asset(asset) =&gt; asset.source.clone().try_into_string()<span class="question-mark">?</span>,
-<a href=#123 id=123 data-nosnippet>123</a>            Output::Chunk(chunk) =&gt; chunk.code.clone(),
-<a href=#124 id=124 data-nosnippet>124</a>        };
-<a href=#125 id=125 data-nosnippet>125</a>        <span class="prelude-val">Ok</span>(code)
-<a href=#126 id=126 data-nosnippet>126</a>    }
-<a href=#127 id=127 data-nosnippet>127</a>}</code></pre></div></section></main></body></html>
+<a href=#101 id=101 data-nosnippet>101</a>            <span class="macro">anyhow!</span>(
+<a href=#102 id=102 data-nosnippet>102</a>                e.into_vec()
+<a href=#103 id=103 data-nosnippet>103</a>                    .iter()
+<a href=#104 id=104 data-nosnippet>104</a>                    .map(|diagnostic| diagnostic.to_diagnostic().to_string())
+<a href=#105 id=105 data-nosnippet>105</a>                    .collect::&lt;Vec&lt;String&gt;&gt;()
+<a href=#106 id=106 data-nosnippet>106</a>                    .join(<span class="string">"\n"</span>)
+<a href=#107 id=107 data-nosnippet>107</a>            )
+<a href=#108 id=108 data-nosnippet>108</a>        })<span class="question-mark">?</span>;
+<a href=#109 id=109 data-nosnippet>109</a>
+<a href=#110 id=110 data-nosnippet>110</a>        <span class="comment">// We have supplied a single entry file, so we expect a single output
+<a href=#111 id=111 data-nosnippet>111</a>        // bundle; this can be broken if widget code contains e.g. dynamic
+<a href=#112 id=112 data-nosnippet>112</a>        // imports, which we do not allow
+<a href=#113 id=113 data-nosnippet>113</a>        </span><span class="kw">if </span>result.assets.len() != <span class="number">1 </span>{
+<a href=#114 id=114 data-nosnippet>114</a>            <span class="macro">bail!</span>(
+<a href=#115 id=115 data-nosnippet>115</a>                <span class="string">"Expected 1 bundled output, found {}; ensure that widget code does not contain \
+<a href=#116 id=116 data-nosnippet>116</a>                 e.g. dynamic imports that may result in extra chunks"</span>,
+<a href=#117 id=117 data-nosnippet>117</a>                result.assets.len()
+<a href=#118 id=118 data-nosnippet>118</a>            );
+<a href=#119 id=119 data-nosnippet>119</a>        }
+<a href=#120 id=120 data-nosnippet>120</a>
+<a href=#121 id=121 data-nosnippet>121</a>        <span class="kw">let </span>output = <span class="kw-2">&amp;</span>result.assets[<span class="number">0</span>];
+<a href=#122 id=122 data-nosnippet>122</a>        <span class="kw">let </span>code = <span class="kw">match </span>output {
+<a href=#123 id=123 data-nosnippet>123</a>            Output::Asset(asset) =&gt; asset.source.clone().try_into_string()<span class="question-mark">?</span>,
+<a href=#124 id=124 data-nosnippet>124</a>            Output::Chunk(chunk) =&gt; chunk.code.clone(),
+<a href=#125 id=125 data-nosnippet>125</a>        };
+<a href=#126 id=126 data-nosnippet>126</a>        <span class="prelude-val">Ok</span>(code)
+<a href=#127 id=127 data-nosnippet>127</a>    }
+<a href=#128 id=128 data-nosnippet>128</a>}</code></pre></div></section></main></body></html>
