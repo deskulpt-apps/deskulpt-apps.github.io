@@ -1,9 +1,9 @@
 (function() {
-    var implementors = Object.fromEntries([["deskulpt_core",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.0/core/ops/bit/trait.BitXorAssign.html\" title=\"trait core::ops::bit::BitXorAssign\">BitXorAssign</a> for <a class=\"struct\" href=\"deskulpt_core/states/setup/struct.Flags.html\" title=\"struct deskulpt_core::states::setup::Flags\">Flags</a>"]]]]);
+    var implementors = Object.fromEntries([["deskulpt_widgets",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.0/core/ops/bit/trait.BitXorAssign.html\" title=\"trait core::ops::bit::BitXorAssign\">BitXorAssign</a> for <a class=\"struct\" href=\"deskulpt_widgets/setup/struct.SetupFlags.html\" title=\"struct deskulpt_widgets::setup::SetupFlags\">SetupFlags</a>"]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":57,"fragment_lengths":[329]}
+//{"start":57,"fragment_lengths":[338]}

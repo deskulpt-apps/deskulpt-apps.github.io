@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["PackageManifest","WidgetCatalog","WidgetConfig","WidgetManifest"],"trait":["LoadManifest"]};
