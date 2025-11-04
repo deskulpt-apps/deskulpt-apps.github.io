@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["bundle","complete_setup","rescan"]};
+window.SIDEBAR_ITEMS = {"fn":["complete_setup","refresh","refresh_all"]};
