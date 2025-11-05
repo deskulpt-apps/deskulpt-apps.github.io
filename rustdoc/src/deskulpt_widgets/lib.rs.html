@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a>    <span class="doccomment">/// The widget catalog.
 <a href=#58 id=58 data-nosnippet>58</a>    </span>catalog: RwLock&lt;WidgetCatalog&gt;,
 <a href=#59 id=59 data-nosnippet>59</a>    <span class="doccomment">/// The handle for the render worker.
-<a href=#60 id=60 data-nosnippet>60</a>    </span>render_handle: RenderWorkerHandle,
+<a href=#60 id=60 data-nosnippet>60</a>    </span>render_worker: RenderWorkerHandle,
 <a href=#61 id=61 data-nosnippet>61</a>    <span class="doccomment">/// The setup state for frontend windows.
 <a href=#62 id=62 data-nosnippet>62</a>    </span>setup_state: SetupState,
 <a href=#63 id=63 data-nosnippet>63</a>}
@@ -65,12 +65,12 @@
 <a href=#65 id=65 data-nosnippet>65</a><span class="kw">impl</span>&lt;R: Runtime&gt; Widgets&lt;R&gt; {
 <a href=#66 id=66 data-nosnippet>66</a>    <span class="doccomment">/// Initialize the [`Widgets`] state.
 <a href=#67 id=67 data-nosnippet>67</a>    </span><span class="kw">fn </span>new(app_handle: AppHandle&lt;R&gt;) -&gt; <span class="self">Self </span>{
-<a href=#68 id=68 data-nosnippet>68</a>        <span class="kw">let </span>render_handle = RenderWorkerHandle::new(app_handle.clone());
+<a href=#68 id=68 data-nosnippet>68</a>        <span class="kw">let </span>render_worker = RenderWorkerHandle::new(app_handle.clone());
 <a href=#69 id=69 data-nosnippet>69</a>
 <a href=#70 id=70 data-nosnippet>70</a>        <span class="self">Self </span>{
 <a href=#71 id=71 data-nosnippet>71</a>            app_handle,
 <a href=#72 id=72 data-nosnippet>72</a>            catalog: Default::default(),
-<a href=#73 id=73 data-nosnippet>73</a>            render_handle,
+<a href=#73 id=73 data-nosnippet>73</a>            render_worker,
 <a href=#74 id=74 data-nosnippet>74</a>            setup_state: Default::default(),
 <a href=#75 id=75 data-nosnippet>75</a>        }
 <a href=#76 id=76 data-nosnippet>76</a>    }
@@ -136,7 +136,7 @@
 <a href=#136 id=136 data-nosnippet>136</a>            .ok_or_else(|| <span class="macro">anyhow!</span>(<span class="string">"Widget {id} does not exist in the catalog"</span>))<span class="question-mark">?</span>;
 <a href=#137 id=137 data-nosnippet>137</a>
 <a href=#138 id=138 data-nosnippet>138</a>        <span class="kw">if let </span>Outcome::Ok(config) = config {
-<a href=#139 id=139 data-nosnippet>139</a>            <span class="self">self</span>.render_handle.process(RenderWorkerTask::Render {
+<a href=#139 id=139 data-nosnippet>139</a>            <span class="self">self</span>.render_worker.process(RenderWorkerTask::Render {
 <a href=#140 id=140 data-nosnippet>140</a>                id: id.to_string(),
 <a href=#141 id=141 data-nosnippet>141</a>                entry: config.entry.clone(),
 <a href=#142 id=142 data-nosnippet>142</a>            })<span class="question-mark">?</span>;
@@ -156,7 +156,7 @@
 <a href=#156 id=156 data-nosnippet>156</a>        <span class="kw">let </span><span class="kw-2">mut </span>errors = <span class="macro">vec!</span>[];
 <a href=#157 id=157 data-nosnippet>157</a>        <span class="kw">for </span>(id, config) <span class="kw">in </span>catalog.<span class="number">0</span>.iter() {
 <a href=#158 id=158 data-nosnippet>158</a>            <span class="kw">if let </span>Outcome::Ok(config) = config
-<a href=#159 id=159 data-nosnippet>159</a>                &amp;&amp; <span class="kw">let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.render_handle.process(RenderWorkerTask::Render {
+<a href=#159 id=159 data-nosnippet>159</a>                &amp;&amp; <span class="kw">let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.render_worker.process(RenderWorkerTask::Render {
 <a href=#160 id=160 data-nosnippet>160</a>                    id: id.clone(),
 <a href=#161 id=161 data-nosnippet>161</a>                    entry: config.entry.clone(),
 <a href=#162 id=162 data-nosnippet>162</a>                })

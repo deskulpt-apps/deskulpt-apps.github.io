@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["init"],"mod":["commands","events","path","settings","states","tray","window"]};
+window.SIDEBAR_ITEMS = {"fn":["init"],"mod":["commands","events","path","settings","shortcuts","states","tray","window"]};
