@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["Bundler"]};
+window.SIDEBAR_ITEMS = {"struct":["Bundler","DefaultDependency"]};

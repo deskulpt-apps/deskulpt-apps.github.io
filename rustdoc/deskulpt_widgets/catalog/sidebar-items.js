@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["manifests"],"struct":["WidgetCatalog","WidgetDescriptor"]};
+window.SIDEBAR_ITEMS = {"struct":["WidgetCatalog","WidgetDescriptor"]};

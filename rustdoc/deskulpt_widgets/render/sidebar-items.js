@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["RenderWorkerTask"],"fn":["process_render_task"],"mod":["alias_plugin","bundler"],"struct":["RenderWorkerHandle"]};
+window.SIDEBAR_ITEMS = {"mod":["alias_plugin","bundler","worker"]};
