@@ -1,9 +1,9 @@
 (function() {
-    var implementors = Object.fromEntries([["deskulpt_core",[["impl&lt;'a&gt; DefaultTemplate for <a class=\"struct\" href=\"deskulpt_core/window/script/struct.CanvasInitJS.html\" title=\"struct deskulpt_core::window::script::CanvasInitJS\">CanvasInitJS</a>&lt;'a&gt;"],["impl&lt;'a&gt; DefaultTemplate for <a class=\"struct\" href=\"deskulpt_core/window/script/struct.ManagerInitJS.html\" title=\"struct deskulpt_core::window::script::ManagerInitJS\">ManagerInitJS</a>&lt;'a&gt;"]]]]);
+    var implementors = Object.fromEntries([["deskulpt_core",[["impl&lt;'a&gt; <a class=\"trait\" href=\"https://docs.rs/serialize-to-javascript/0.1.2/serialize_to_javascript/trait.DefaultTemplate.html\" title=\"trait serialize_to_javascript::DefaultTemplate\">DefaultTemplate</a> for <a class=\"struct\" href=\"deskulpt_core/window/script/struct.CanvasInitJS.html\" title=\"struct deskulpt_core::window::script::CanvasInitJS\">CanvasInitJS</a>&lt;'a&gt;"],["impl&lt;'a&gt; <a class=\"trait\" href=\"https://docs.rs/serialize-to-javascript/0.1.2/serialize_to_javascript/trait.DefaultTemplate.html\" title=\"trait serialize_to_javascript::DefaultTemplate\">DefaultTemplate</a> for <a class=\"struct\" href=\"deskulpt_core/window/script/struct.ManagerInitJS.html\" title=\"struct deskulpt_core::window::script::ManagerInitJS\">ManagerInitJS</a>&lt;'a&gt;"]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":57,"fragment_lengths":[440]}
+//{"start":57,"fragment_lengths":[812]}
