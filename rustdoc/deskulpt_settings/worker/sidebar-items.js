@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["WorkerTask"],"fn":["worker"],"struct":["WorkerHandle"]};

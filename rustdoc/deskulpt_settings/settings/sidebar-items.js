@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ShortcutAction","Theme"],"struct":["Settings","SettingsPatch","WidgetSettings","WidgetSettingsPatch"]};

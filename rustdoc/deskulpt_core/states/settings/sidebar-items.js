@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["SettingsWorkerTask"],"struct":["SettingsHooks","SettingsState","SettingsWorkerHandle"],"trait":["SettingsStateExt"],"type":["OnShortcutChange","OnThemeChange"]};
