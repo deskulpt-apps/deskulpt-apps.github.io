@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["DESKULPT_ICON"],"fn":["run"]};
+window.SIDEBAR_ITEMS = {"fn":["run"]};
