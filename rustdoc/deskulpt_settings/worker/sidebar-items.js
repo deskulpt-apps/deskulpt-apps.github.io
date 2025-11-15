@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["WorkerTask"],"fn":["worker"],"struct":["WorkerHandle"]};
+window.SIDEBAR_ITEMS = {"constant":["PERSIST_DEBOUNCE"],"enum":["WorkerTask"],"struct":["Worker","WorkerHandle"]};
