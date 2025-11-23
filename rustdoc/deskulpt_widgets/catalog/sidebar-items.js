@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["WIDGET_MANIFEST_FILE"],"struct":["WidgetCatalog","WidgetManifest"]};
+window.SIDEBAR_ITEMS = {"constant":["WIDGET_MANIFEST_FILE"],"enum":["WidgetManifestAuthor"],"struct":["WidgetCatalog","WidgetManifest"]};
