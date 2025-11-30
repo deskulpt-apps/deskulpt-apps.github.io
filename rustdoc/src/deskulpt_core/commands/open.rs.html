@@ -12,28 +12,31 @@
 <a href=#12 id=12 data-nosnippet>12</a>    </span>Widgets,
 <a href=#13 id=13 data-nosnippet>13</a>    <span class="doccomment">/// A specific widget directory by its ID.
 <a href=#14 id=14 data-nosnippet>14</a>    </span>Widget(String),
-<a href=#15 id=15 data-nosnippet>15</a>    <span class="doccomment">/// The logs directory.
-<a href=#16 id=16 data-nosnippet>16</a>    </span>Logs,
-<a href=#17 id=17 data-nosnippet>17</a>}
-<a href=#18 id=18 data-nosnippet>18</a>
-<a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// Open a specified target with the system's default application.
-<a href=#20 id=20 data-nosnippet>20</a>///
-<a href=#21 id=21 data-nosnippet>21</a>/// See [`OpenTarget`] for more details.
+<a href=#15 id=15 data-nosnippet>15</a>    <span class="doccomment">/// The persisted settings file.
+<a href=#16 id=16 data-nosnippet>16</a>    </span>Settings,
+<a href=#17 id=17 data-nosnippet>17</a>    <span class="doccomment">/// The logs directory.
+<a href=#18 id=18 data-nosnippet>18</a>    </span>Logs,
+<a href=#19 id=19 data-nosnippet>19</a>}
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a><span class="doccomment">/// Open a specified target with the system's default application.
 <a href=#22 id=22 data-nosnippet>22</a>///
-<a href=#23 id=23 data-nosnippet>23</a>/// ### Errors
+<a href=#23 id=23 data-nosnippet>23</a>/// See [`OpenTarget`] for more details.
 <a href=#24 id=24 data-nosnippet>24</a>///
-<a href=#25 id=25 data-nosnippet>25</a>/// - Error accessing the specified target.
-<a href=#26 id=26 data-nosnippet>26</a>/// - Error opening the target.
-<a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[command]
-<a href=#28 id=28 data-nosnippet>28</a>#[specta::specta]
-<a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub async fn </span>open&lt;R: Runtime&gt;(app_handle: AppHandle&lt;R&gt;, target: OpenTarget) -&gt; SerResult&lt;()&gt; {
-<a href=#30 id=30 data-nosnippet>30</a>    <span class="kw">let </span>path = <span class="kw">match </span>target {
-<a href=#31 id=31 data-nosnippet>31</a>        OpenTarget::Widgets =&gt; app_handle.widgets_dir()<span class="question-mark">?</span>,
-<a href=#32 id=32 data-nosnippet>32</a>        OpenTarget::Widget(id) =&gt; <span class="kw-2">&amp;</span>app_handle.widget_dir(<span class="kw-2">&amp;</span>id)<span class="question-mark">?</span>,
-<a href=#33 id=33 data-nosnippet>33</a>        OpenTarget::Logs =&gt; app_handle.logs_dir()<span class="question-mark">?</span>,
-<a href=#34 id=34 data-nosnippet>34</a>    };
-<a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a>    open::that_detached(path)<span class="question-mark">?</span>;
-<a href=#37 id=37 data-nosnippet>37</a>    <span class="prelude-val">Ok</span>(())
-<a href=#38 id=38 data-nosnippet>38</a>}
+<a href=#25 id=25 data-nosnippet>25</a>/// ### Errors
+<a href=#26 id=26 data-nosnippet>26</a>///
+<a href=#27 id=27 data-nosnippet>27</a>/// - Error accessing the specified target.
+<a href=#28 id=28 data-nosnippet>28</a>/// - Error opening the target.
+<a href=#29 id=29 data-nosnippet>29</a></span><span class="attr">#[command]
+<a href=#30 id=30 data-nosnippet>30</a>#[specta::specta]
+<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub async fn </span>open&lt;R: Runtime&gt;(app_handle: AppHandle&lt;R&gt;, target: OpenTarget) -&gt; SerResult&lt;()&gt; {
+<a href=#32 id=32 data-nosnippet>32</a>    <span class="kw">let </span>path = <span class="kw">match </span>target {
+<a href=#33 id=33 data-nosnippet>33</a>        OpenTarget::Widgets =&gt; app_handle.widgets_dir()<span class="question-mark">?</span>,
+<a href=#34 id=34 data-nosnippet>34</a>        OpenTarget::Widget(id) =&gt; <span class="kw-2">&amp;</span>app_handle.widget_dir(<span class="kw-2">&amp;</span>id)<span class="question-mark">?</span>,
+<a href=#35 id=35 data-nosnippet>35</a>        OpenTarget::Settings =&gt; <span class="kw-2">&amp;</span>app_handle.persist_dir()<span class="question-mark">?</span>.join(<span class="string">"settings.json"</span>),
+<a href=#36 id=36 data-nosnippet>36</a>        OpenTarget::Logs =&gt; app_handle.logs_dir()<span class="question-mark">?</span>,
+<a href=#37 id=37 data-nosnippet>37</a>    };
+<a href=#38 id=38 data-nosnippet>38</a>
+<a href=#39 id=39 data-nosnippet>39</a>    open::that_detached(path)<span class="question-mark">?</span>;
+<a href=#40 id=40 data-nosnippet>40</a>    <span class="prelude-val">Ok</span>(())
+<a href=#41 id=41 data-nosnippet>41</a>}
 </code></pre></div></section></main></body></html>
