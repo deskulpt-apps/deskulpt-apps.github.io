@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["complete_setup","refresh","refresh_all"]};
+window.SIDEBAR_ITEMS = {"fn":["complete_setup","fetch_registry_index","install","preview","refresh","refresh_all","uninstall","upgrade"]};
