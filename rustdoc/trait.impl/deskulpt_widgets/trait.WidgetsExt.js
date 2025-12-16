@@ -1,9 +1,9 @@
 (function() {
-    var implementors = Object.fromEntries([["deskulpt_widgets",[]]]);
+    const implementors = Object.fromEntries([["deskulpt_widgets",[]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":57,"fragment_lengths":[23]}
+//{"start":59,"fragment_lengths":[23]}
